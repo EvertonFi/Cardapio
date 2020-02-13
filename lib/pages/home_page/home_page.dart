@@ -1,9 +1,9 @@
-import 'package:cardapio/consts/consts_app.dart';
-import 'package:cardapio/models/cardaapi.dart';
-import 'package:cardapio/pages/carda_detail/carda_detail.dart';
-import 'package:cardapio/pages/home_page/widgets/app_bar_home.dart';
-import 'package:cardapio/pages/home_page/widgets/carda_item.dart';
-import 'package:cardapio/stores/comiapi_store.dart';
+import 'package:Cardapio/consts/consts_app.dart';
+import 'package:Cardapio/models/cardaapi.dart';
+import 'package:Cardapio/pages/carda_detail/carda_detail.dart';
+import 'package:Cardapio/pages/home_page/widgets/app_bar_home.dart';
+import 'package:Cardapio/pages/home_page/widgets/carda_item.dart';
+import 'package:Cardapio/stores/comiapi_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';

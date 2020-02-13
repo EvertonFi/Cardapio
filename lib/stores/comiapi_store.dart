@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cardapio/models/cardaapi.dart';
+import 'package:Cardapio/models/cardaapi.dart';
 import 'package:flutter/material.dart';
-import 'package:cardapio/consts/consts_api.dart';
+import 'package:Cardapio/consts/consts_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobx/mobx.dart';
