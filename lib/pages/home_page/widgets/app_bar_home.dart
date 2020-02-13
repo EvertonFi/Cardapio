@@ -25,13 +25,17 @@ class AppBarHome extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Padding(
-                              child: Text('Cardápio Online', 
-                    style: TextStyle(
-                      fontFamily: 'Google',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28,
-                      ),
-                ), padding: EdgeInsets.only(left: 20,),
+                child: Text(
+                  'Cardápio Online',
+                  style: TextStyle(
+                    fontFamily: 'Google',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 28,
+                  ),
+                ),
+                padding: EdgeInsets.only(
+                  left: 20,
+                ),
               ),
             ],
           )

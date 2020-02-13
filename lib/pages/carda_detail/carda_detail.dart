@@ -1,19 +1,24 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cardapio/consts/consts_api.dart';
+import 'package:cardapio/consts/consts_app.dart';
 import 'package:cardapio/models/cardaapi.dart';
 import 'package:cardapio/stores/comiapi_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
-class CardaDateilPage extends StatelessWidget {
+class CardaDateilPage extends StatefulWidget {
   final int index;
 
-  Color _corCategoria;
-
   CardaDateilPage({Key key, this.index}) : super(key: key);
+
+  @override
+  _CardaDateilPageState createState() => _CardaDateilPageState();
+}
+
+class _CardaDateilPageState extends State<CardaDateilPage> {
+  Color _corCategoria;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +33,7 @@ class CardaDateilPage extends StatelessWidget {
             preferredSize: Size.fromHeight(50),
             child: Observer(builder: (BuildContext context) {
               _corCategoria = ConstsApi.getColorCategoria(
-                    categoria: _cardapioStore.cardapioAtual.nomeCategoria);
+                  categoria: _cardapioStore.cardapioAtual.nomeCategoria);
               return AppBar(
                 title: Opacity(
                   child: Text(
@@ -51,7 +56,7 @@ class CardaDateilPage extends StatelessWidget {
                 ),
                 actions: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.favorite_border),
+                    icon: Icon(Icons.add_shopping_cart),
                     onPressed: () {},
                   ),
                 ],
@@ -69,20 +74,6 @@ class CardaDateilPage extends StatelessWidget {
               }),
               Container(
                 height: MediaQuery.of(context).size.height / 3,
-              ),
-              SlidingSheet(
-                elevation: 0,
-                cornerRadius: 16,
-                snapSpec: const SnapSpec(
-                  snap: true,
-                  snappings: [0.7, 1.0],
-                  positioning: SnapPositioning.relativeToAvailableSpace,
-                ),
-                builder: (context, state) {
-                  return Container(
-                    height: MediaQuery.of(context).size.height,
-                  );
-                },
               ),
               Padding(
                 child: SizedBox(
@@ -108,7 +99,120 @@ class CardaDateilPage extends StatelessWidget {
                   ),
                 ),
                 padding: EdgeInsets.only(top: 50),
-              )
+              ),
+              SlidingSheet(
+                elevation: 0,
+                cornerRadius: 16,
+                snapSpec: const SnapSpec(
+                  snap: true,
+                  snappings: [0.7, 1.0],
+                  positioning: SnapPositioning.relativeToAvailableSpace,
+                ),
+                builder: (context, state) {
+                  return Stack(
+                    children: <Widget>[
+                      Stack(
+                        children: <Widget>[
+                          Opacity(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 120),
+                              child: Center(
+                                child: Image.asset(
+                                  ConstsApp.darkFire,
+                                  height: 300,
+                                  width: 300,
+                                ),
+                              ),
+                            ),
+                            opacity: 0.03,
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height,
+                        child: PreferredSize(
+                          child: MaterialApp(
+                            debugShowCheckedModeBanner: false,
+                            home: DefaultTabController(
+                              length: 2,
+                              child: Scaffold(
+                                backgroundColor: Colors.transparent,
+                                appBar: PreferredSize(
+                                  child: AppBar(
+                                    bottom: TabBar(
+                                      tabs: [
+                                        Tab(
+                                          child: Text(
+                                            'Descrição',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18,
+                                              fontFamily: 'Google',
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        Tab(
+                                          child: Text(
+                                            'Ingredientes',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 18,
+                                              fontFamily: 'Google',
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    backgroundColor: Colors.white,
+                                  ),
+                                  preferredSize: Size.fromHeight(48),
+                                ),
+                                body: TabBarView(
+                                  children: [
+                                    Observer(builder: (_) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(30),
+                                        child: Text(
+                                          _cardapioStore
+                                              .cardapioAtual.descricao,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 18,
+                                            fontFamily: 'Google',
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                                    Observer(builder: (_) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(30),
+                                        child: Text(
+                                          _cardapioStore
+                                              .cardapioAtual.acompanhamento,
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 18,
+                                            fontFamily: 'Google',
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          preferredSize: Size.fromHeight(150),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ],
           ),
         );
