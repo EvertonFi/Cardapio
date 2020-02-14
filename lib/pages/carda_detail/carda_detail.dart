@@ -19,7 +19,7 @@ class CardaDateilPage extends StatefulWidget {
 
 class _CardaDateilPageState extends State<CardaDateilPage> {
   Color _corCategoria;
-
+  
   @override
   Widget build(BuildContext context) {
     final _cardapioStore = Provider.of<ComiApiStore>(context);
@@ -93,7 +93,7 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                           color: Colors.transparent,
                         ),
                         imageUrl:
-                            'http://10.0.0.105/imagens/${_cardapioitem.idPrato}.png',
+                            'http://10.0.0.105/imagens/${_cardapio.idPrato}.png',
                       );
                     },
                   ),
