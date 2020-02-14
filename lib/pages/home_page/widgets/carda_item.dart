@@ -93,7 +93,8 @@ class CardaItem extends StatelessWidget {
                 placeholder: (context, url) => new Container(
                   color: Colors.transparent,
                 ),
-                imageUrl: 'http://10.0.0.105/imagens/$idPrato.png',
+                imageUrl:
+                    'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/imagens/$idPrato.png',
               ),
             ),
           ],

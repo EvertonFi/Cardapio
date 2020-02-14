@@ -48,7 +48,7 @@ abstract class _ComiApiStoreBase with Store {
       placeholder: (context, url) => new Container(
         color: Colors.transparent,
       ),
-      imageUrl: 'http://10.0.0.105/imagens/$numero.png',
+      imageUrl: 'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/imagens/$numero.png',
     );
   }
 

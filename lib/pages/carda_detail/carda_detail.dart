@@ -19,7 +19,7 @@ class CardaDateilPage extends StatefulWidget {
 
 class _CardaDateilPageState extends State<CardaDateilPage> {
   Color _corCategoria;
-  
+
   @override
   Widget build(BuildContext context) {
     final _cardapioStore = Provider.of<ComiApiStore>(context);
@@ -56,9 +56,9 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                 ),
                 actions: <Widget>[
                   IconButton(
-                    icon: Icon(Icons.add_shopping_cart),
+                    icon: Icon(Icons.shopping_cart),
                     onPressed: () {},
-                  ),
+                  )
                 ],
               );
             }),
@@ -84,6 +84,8 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                     },
                     itemCount: _cardapioStore.cardaAPI.cardapio.length,
                     itemBuilder: (BuildContext context, int count) {
+                      Cardapio _cardapioItem =
+                          _cardapioStore.getCardapio(index: count);
                       return CachedNetworkImage(
                         height: 100,
                         width: 100,
@@ -91,7 +93,7 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                           color: Colors.transparent,
                         ),
                         imageUrl:
-                            'http://10.0.0.105/imagens/${_cardapio.idPrato}.png',
+                            'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/imagens/${_cardapioItem.idPrato}.png',
                       );
                     },
                   ),
@@ -138,6 +140,7 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                                 appBar: PreferredSize(
                                   child: AppBar(
                                     bottom: TabBar(
+                                      indicatorColor: _corCategoria,
                                       tabs: [
                                         Tab(
                                           child: Text(
@@ -211,6 +214,35 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                   );
                 },
               ),
+              Observer(builder: (_) {
+                _corCategoria = ConstsApi.getColorCategoria(
+                  categoria: _cardapioStore.cardapioAtual.nomeCategoria);
+                return Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ButtonBar(
+                    alignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: ButtonTheme(
+                          height: 50,
+                          child: RaisedButton(
+                            textColor: _corCategoria,
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              side: BorderSide(color: _corCategoria),
+                            ),
+                            onPressed: () {},
+                            child: const Text('Adicionar ao pedido',
+                                style: TextStyle(fontSize: 30)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              })
             ],
           ),
         );
