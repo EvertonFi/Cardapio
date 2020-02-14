@@ -1,4 +1,3 @@
-import 'package:Cardapio/consts/consts_app.dart';
 import 'package:Cardapio/models/cardaapi.dart';
 import 'package:Cardapio/pages/carda_detail/carda_detail.dart';
 import 'package:Cardapio/pages/home_page/widgets/app_bar_home.dart';
@@ -9,15 +8,13 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 
-
-class HomePage extends StatelessWidget{
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _cardaApiStore = Provider.of<ComiApiStore>(context);
     if (_cardaApiStore.cardaAPI == null) {
       _cardaApiStore.fetchCardapioList();
     }
-    double screenWidth = MediaQuery.of(context).size.width;
     double statusWidth = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -25,14 +22,6 @@ class HomePage extends StatelessWidget{
         alignment: Alignment.topCenter,
         overflow: Overflow.visible,
         children: <Widget>[
-          Positioned(
-            top: -(240 / 3),
-            left: screenWidth - (240 / 1.3),
-            child: Opacity(
-              child: Image.asset(ConstsApp.darkFire, height: 240, width: 240),
-              opacity: 0.2,
-            ),
-          ),
           Container(
             child: Column(
               children: <Widget>[
@@ -40,7 +29,10 @@ class HomePage extends StatelessWidget{
                   height: statusWidth,
                   color: Colors.redAccent,
                 ),
-                AppBarHome(),
+                SizedBox(
+                  height: 150,
+                  child: AppBarHome(),
+                ),
                 Expanded(
                   child: Container(
                     child: Observer(
@@ -77,7 +69,8 @@ class HomePage extends StatelessWidget{
                                             ),
                                           ),
                                           onTap: () {
-                                            _cardaApiStore.setCardapioAtual(index: index);
+                                            _cardaApiStore.setCardapioAtual(
+                                                index: index);
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
@@ -107,6 +100,7 @@ class HomePage extends StatelessWidget{
           ),
         ],
       ),
+      drawer: Drawer(),
     );
   }
 }
