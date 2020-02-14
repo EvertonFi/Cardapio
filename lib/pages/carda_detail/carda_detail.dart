@@ -84,8 +84,6 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                     },
                     itemCount: _cardapioStore.cardaAPI.cardapio.length,
                     itemBuilder: (BuildContext context, int count) {
-                      Cardapio _cardapioitem =
-                          _cardapioStore.getCardapio(index: count);
                       return CachedNetworkImage(
                         height: 100,
                         width: 100,
