@@ -86,14 +86,10 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                     itemBuilder: (BuildContext context, int count) {
                       Cardapio _cardapioItem =
                           _cardapioStore.getCardapio(index: count);
-                      return CachedNetworkImage(
+                      return Image.network(
+                        'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/imagens/${_cardapioItem.idPrato}.png',
                         height: 100,
                         width: 100,
-                        placeholder: (context, url) => new Container(
-                          color: Colors.transparent,
-                        ),
-                        imageUrl:
-                            'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/imagens/${_cardapioItem.idPrato}.png',
                       );
                     },
                   ),
@@ -140,7 +136,8 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                                 appBar: PreferredSize(
                                   child: AppBar(
                                     bottom: TabBar(
-                                      indicatorColor: _corCategoria,
+                                      indicatorColor:
+                                          Color.fromRGBO(243, 193, 58, 1),
                                       tabs: [
                                         Tab(
                                           child: Text(
@@ -216,7 +213,7 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
               ),
               Observer(builder: (_) {
                 _corCategoria = ConstsApi.getColorCategoria(
-                  categoria: _cardapioStore.cardapioAtual.nomeCategoria);
+                    categoria: _cardapioStore.cardapioAtual.nomeCategoria);
                 return Align(
                   alignment: Alignment.bottomCenter,
                   child: ButtonBar(

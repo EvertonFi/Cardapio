@@ -12,7 +12,7 @@ class AppBarHome extends StatelessWidget {
           padding: EdgeInsets.only(right: 10, top: 60),
           child: FloatingActionButton(
             child: Icon(Icons.menu),
-            backgroundColor: Colors.red,
+            backgroundColor: Color.fromRGBO(243, 193, 58, 1),
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
@@ -53,18 +53,6 @@ class AppBarHome extends StatelessWidget {
                       opacity: 0.2,
                     ),
                   ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              DrawerHeader(
-                child: Text('Drawer Header'),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
                 ),
               ),
             ],

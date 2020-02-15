@@ -87,14 +87,10 @@ class CardaItem extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomRight,
-              child: CachedNetworkImage(
+              child: Image.network(
+                'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/imagens/$idPrato.png',
                 height: 100,
                 width: 100,
-                placeholder: (context, url) => new Container(
-                  color: Colors.transparent,
-                ),
-                imageUrl:
-                    'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/imagens/$idPrato.png',
               ),
             ),
           ],
