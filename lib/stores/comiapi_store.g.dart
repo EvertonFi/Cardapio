@@ -59,10 +59,10 @@ mixin _$ComiApiStore on _ComiApiStoreBase, Store {
       ActionController(name: '_ComiApiStoreBase');
 
   @override
-  dynamic fetchCardapioList() {
+  dynamic fetchCardapioList({int categoria}) {
     final _$actionInfo = _$_ComiApiStoreBaseActionController.startAction();
     try {
-      return super.fetchCardapioList();
+      return super.fetchCardapioList(categoria: categoria);
     } finally {
       _$_ComiApiStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -96,5 +96,12 @@ mixin _$ComiApiStore on _ComiApiStoreBase, Store {
     } finally {
       _$_ComiApiStoreBaseActionController.endAction(_$actionInfo);
     }
+  }
+
+  @override
+  String toString() {
+    final string =
+        'cardaAPI: ${cardaAPI.toString()},cardapioAtual: ${cardapioAtual.toString()}';
+    return '{$string}';
   }
 }

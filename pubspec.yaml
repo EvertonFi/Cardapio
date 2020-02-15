@@ -30,7 +30,7 @@ dependencies:
   intl: ^0.16.1
   http: ^0.12.0+4
   flutter_launcher_icons: "^0.7.0"
-  flutter_svg: ^0.17.1
+  community_material_icon: "3.5.95"
 
 flutter_icons:
   ios: true

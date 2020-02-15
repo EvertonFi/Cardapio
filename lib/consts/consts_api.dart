@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ConstsApi {
-  static String cardaApiURL = 'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/json_api.js';
+  static String cardaApiURLAll = 'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/json_api_All.js';
+  static String cardaApiURLFood = 'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/json_api_Food.js';
+  static String cardaApiURLDrink = 'https://raw.githubusercontent.com/EvertonFi/ApiCardapio/master/json_api_Drink.js';
 
  static Color getColorCategoria({String categoria}){
   switch (categoria) {

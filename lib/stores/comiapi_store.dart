@@ -24,9 +24,9 @@ abstract class _ComiApiStoreBase with Store {
   Cardapio get cardapioAtual => _cardapioAtual;
 
   @action
-  fetchCardapioList() {
+  fetchCardapioList({int categoria}) {
     _cardaAPI = null;
-    loadCardaAPI().then((carList) {
+    loadCardaAPI(categoria: categoria).then((carList) {
       _cardaAPI = carList;
     });
   }
@@ -52,9 +52,23 @@ abstract class _ComiApiStoreBase with Store {
     );
   }
 
-  Future<CardaAPI> loadCardaAPI() async {
+  Future<CardaAPI> loadCardaAPI({int categoria}) async {
     try {
-      final response = await http.get(ConstsApi.cardaApiURL);
+      String url = '';
+      switch (categoria) {
+        case 0:
+          url = ConstsApi.cardaApiURLAll;
+          break;
+        case 1:
+        url = ConstsApi.cardaApiURLFood;
+        break;
+        case 2:
+          url = ConstsApi.cardaApiURLDrink;
+          break;
+        default:
+          url = ConstsApi.cardaApiURLAll;
+      }
+      final response = await http.get(url);
       var decodeJson = jsonDecode(response.body);
       return CardaAPI.fromJson(decodeJson);
     } catch (error) {

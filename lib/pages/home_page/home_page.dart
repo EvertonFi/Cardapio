@@ -1,4 +1,7 @@
 import 'package:Cardapio/pages/all_item/all_item.dart';
+import 'package:Cardapio/pages/drink_item/drink_item.dart';
+import 'package:Cardapio/pages/food_item/food_item.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +13,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     AllItem(),
+    FoodItem(),
+    DrinkItem(),
   ];
 
   void _onItemTapped(int index) {
@@ -27,15 +32,15 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(Icons.fastfood),
             title: Text('Todos'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(CommunityMaterialIcons.hamburger),
             title: Text('Hambúrgues'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(CommunityMaterialIcons.cup),
             title: Text('Bebidas'),
           ),
         ],

@@ -8,11 +8,13 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 
-class AllItem extends StatelessWidget {
+class FoodItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _cardaApiStore = Provider.of<ComiApiStore>(context);
-    _cardaApiStore.fetchCardapioList(categoria: 0);
+
+    _cardaApiStore.fetchCardapioList(categoria: 1);
+
     double statusWidth = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.white,
