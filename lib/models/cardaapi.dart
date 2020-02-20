@@ -29,6 +29,7 @@ class Cardapio {
   String preco;
   String idPrato;
   String img;
+  String idCategoria;
 
   Cardapio(
       {this.nomeCategoria,
@@ -37,7 +38,8 @@ class Cardapio {
       this.nomePrato,
       this.preco,
       this.idPrato,
-      this.img});
+      this.img,
+      this.idCategoria});
 
   Cardapio.fromJson(Map<String, dynamic> json) {
     nomeCategoria = json['Nome_Categoria'];
@@ -47,6 +49,7 @@ class Cardapio {
     preco = json['Preco'];
     idPrato = json['idPrato'];
     img = json['img'];
+    idCategoria = json['idCategoria'];
   }
 
   Map<String, dynamic> toJson() {
@@ -58,6 +61,7 @@ class Cardapio {
     data['Preco'] = this.preco;
     data['idPrato'] = this.idPrato;
     data['img'] = this.img;
+    data['idCategoria'] = this.idCategoria;
     return data;
   }
 }
