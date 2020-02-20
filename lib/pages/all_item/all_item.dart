@@ -6,13 +6,26 @@ import 'package:Cardapio/stores/comiapi_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 
-class AllItem extends StatelessWidget {
+class AllItem extends StatefulWidget {
+  @override
+  _AllItemState createState() => _AllItemState();
+}
+
+class _AllItemState extends State<AllItem> {
+
+  ComiApiStore _cardaApiStore;
+  @override
+  void initState() {
+    super.initState();
+    _cardaApiStore = GetIt.instance<ComiApiStore>();
+    _cardaApiStore.fetchCardapioList(categoria: 0);
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    final _cardaApiStore = Provider.of<ComiApiStore>(context);
-    _cardaApiStore.fetchCardapioList(categoria: 0);
     double statusWidth = MediaQuery.of(context).padding.top;
     return Scaffold(
       backgroundColor: Colors.white,

@@ -17,6 +17,9 @@ abstract class _ComiApiStoreBase with Store {
   @observable
   Cardapio _cardapioAtual;
 
+  @observable
+  Color corCategoria;
+
   @computed
   CardaAPI get cardaAPI => _cardaAPI;
 
@@ -39,6 +42,7 @@ abstract class _ComiApiStoreBase with Store {
   @action
   setCardapioAtual({int index}) {
     _cardapioAtual = _cardaAPI.cardapio[index];
+    corCategoria = ConstsApi.getColorCategoria(categoria: _cardapioAtual.nomeCategoria);
   }
 
 

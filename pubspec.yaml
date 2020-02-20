@@ -23,7 +23,6 @@ dependencies:
   flutter_mobx:
   cached_network_image: ^2.0.0
   md2_tab_indicator: ^1.0.2
-  provider: ^4.0.1
   flutter_staggered_animations: "^0.1.2"
   sliding_sheet: ^0.2.4
   flutter_icons: ^1.0.0+1
@@ -31,6 +30,7 @@ dependencies:
   http: ^0.12.0+4
   flutter_launcher_icons: "^0.7.0"
   community_material_icon: "3.5.95"
+  get_it: ^3.1.0
 
 flutter_icons:
   ios: true

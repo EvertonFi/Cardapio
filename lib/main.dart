@@ -1,29 +1,25 @@
 import 'package:Cardapio/pages/home_page/home_page.dart';
 import 'package:Cardapio/stores/comiapi_store.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:provider/single_child_widget.dart';
+import 'package:get_it/get_it.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  GetIt getIt = GetIt.instance;
+  getIt.registerSingleton<ComiApiStore>(ComiApiStore());
+  return runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      child: MaterialApp(
-        title: 'Cardápio Mobile',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: HomePage(),
+    return MaterialApp(
+      title: 'Cardápio Mobile',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      providers: <SingleChildWidget>[
-        Provider<ComiApiStore>(
-          create: (_) => ComiApiStore(),
-        )
-      ],
+      home: HomePage(),
     );
   }
 }

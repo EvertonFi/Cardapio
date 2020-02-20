@@ -4,7 +4,7 @@ import 'package:Cardapio/models/cardaapi.dart';
 import 'package:Cardapio/stores/comiapi_store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 class CardaDateilPage extends StatefulWidget {
@@ -17,22 +17,23 @@ class CardaDateilPage extends StatefulWidget {
 }
 
 class _CardaDateilPageState extends State<CardaDateilPage> {
-  Color _corCategoria;
+  PageController _pageController;
+  ComiApiStore _cardapioStore;
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: widget.index);
+    _cardapioStore = GetIt.instance<ComiApiStore>();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final _cardapioStore = Provider.of<ComiApiStore>(context);
-    Cardapio _cardapio = _cardapioStore.cardapioAtual;
-    _corCategoria =
-        ConstsApi.getColorCategoria(categoria: _cardapio.nomeCategoria);
     return Observer(
       builder: (BuildContext context) {
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50),
             child: Observer(builder: (BuildContext context) {
-              _corCategoria = ConstsApi.getColorCategoria(
-                  categoria: _cardapioStore.cardapioAtual.nomeCategoria);
               return AppBar(
                 title: Opacity(
                   child: Text(
@@ -46,7 +47,7 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                   opacity: 1,
                 ),
                 elevation: 0,
-                backgroundColor: _corCategoria,
+                backgroundColor: _cardapioStore.corCategoria,
                 leading: IconButton(
                   icon: Icon(Icons.arrow_back),
                   onPressed: () {
@@ -65,10 +66,8 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
           body: Stack(
             children: <Widget>[
               Observer(builder: (context) {
-                _corCategoria = ConstsApi.getColorCategoria(
-                    categoria: _cardapioStore.cardapioAtual.nomeCategoria);
                 return Container(
-                  color: _corCategoria,
+                  color: _cardapioStore.corCategoria,
                 );
               }),
               Container(
@@ -78,6 +77,7 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                 child: SizedBox(
                   height: 150,
                   child: PageView.builder(
+                    controller: _pageController,
                     onPageChanged: (index) {
                       _cardapioStore.setCardapioAtual(index: index);
                     },
@@ -211,7 +211,7 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                 },
               ),
               Observer(builder: (_) {
-                _corCategoria = ConstsApi.getColorCategoria(
+                _cardapioStore.corCategoria = ConstsApi.getColorCategoria(
                     categoria: _cardapioStore.cardapioAtual.nomeCategoria);
                 return Align(
                   alignment: Alignment.bottomCenter,
@@ -223,11 +223,11 @@ class _CardaDateilPageState extends State<CardaDateilPage> {
                         child: ButtonTheme(
                           height: 50,
                           child: RaisedButton(
-                            textColor: _corCategoria,
+                            textColor: _cardapioStore.corCategoria,
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
-                              side: BorderSide(color: _corCategoria),
+                              side: BorderSide(color: _cardapioStore.corCategoria),
                             ),
                             onPressed: () {},
                             child: const Text('Adicionar ao pedido',
