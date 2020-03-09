@@ -4,3 +4,5 @@ Esse é um projeto desenvolvido em Flutter de um Layout que puxa dados de uma Js
 
 ## Como foi desenvolvido
 Desenvolvido para mostrar como é simples desenvolvemos uma aplicação simples e de grande mercado para todas as empresas que realiza entrega de alimentos.
+
+![](https://raw.githubusercontent.com/EvertonFi/Cardapio/master/assets/images/APP.png)
