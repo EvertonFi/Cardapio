@@ -1,16 +1,6 @@
-# cardapio
+# Cardápio
 
-A new Flutter project.
+Esse é um projeto desenvolvido em Flutter de um Layout que puxa dados de uma Json.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Como foi desenvolvido
+Desenvolvido para mostrar como é simples desenvolvemos uma aplicação simples e de grande mercado para todas as empresas que realiza entrega de alimentos.
